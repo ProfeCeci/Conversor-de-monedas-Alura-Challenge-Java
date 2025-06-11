@@ -21,16 +21,19 @@ public class ConversorApp {
                 scanner.nextLine();
 
                 CambioMoneda tasas;
+                double cantidad, resultadoCambio;
+                String monedaOrigen, monedaDestino;
+
                 switch (opcion) {
                     case 1:
                         System.out.println("Ha elegido Dólar => Peso argentino");
                         System.out.println("Ingrese el valor que desee convertir: ");
-                        double cantidad = scanner.nextDouble();
+                        cantidad = scanner.nextDouble();
                         scanner.nextLine();
-                        String monedaOrigen = "USD";
-                        String monedaDestino = "ARS";
+                        monedaOrigen = "USD";
+                        monedaDestino = "ARS";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        double resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
                         System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 2:
