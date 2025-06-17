@@ -1,24 +1,23 @@
 package com.cecilialopez.conversormonedas.utils;
 
-import com.cecilialopez.conversormonedas.models.CambioMoneda;
-
 import java.util.Map;
+import com.cecilialopez.conversormonedas.models.ConversionSolicitud;
 
 public class CalculadorConversion {
 
-    public double convertir(double cantidad, String monedaOrigen, String monedaDestino, CambioMoneda tasas){
-        Map<String, Double> precios = tasas.conversion_rates();
-        String baseCode = tasas.base_code();
+    public double convertir(ConversionSolicitud solicitud) {
+        Map<String, Double> precios = solicitud.tasas().conversion_rates();
+        String baseCode = solicitud.tasas().base_code();
 
-        if (!precios.containsKey(monedaOrigen) || !precios.containsKey(monedaDestino)) {
-            // Manejo de error: una o ambas monedas no están en los datos de la API
+        if (!precios.containsKey(solicitud.monedaOrigen()) ||
+                !precios.containsKey(solicitud.monedaDestino())) {
             throw new IllegalArgumentException("Una de las monedas no está disponible para la conversión.");
         }
 
-        double resultadoCambio=0;
+        double resultadoCambio = 0;
 
-        if (monedaOrigen.equalsIgnoreCase(baseCode)) {
-            resultadoCambio = cantidad * precios.get(monedaDestino);
+        if (solicitud.monedaOrigen().equalsIgnoreCase(baseCode)) {
+            resultadoCambio = solicitud.cantidad() * precios.get(solicitud.monedaDestino());
         }
 
         return resultadoCambio;

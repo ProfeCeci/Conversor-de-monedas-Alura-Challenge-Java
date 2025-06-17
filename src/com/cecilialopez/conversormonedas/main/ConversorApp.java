@@ -1,6 +1,7 @@
 package com.cecilialopez.conversormonedas.main;
 
 import com.cecilialopez.conversormonedas.models.CambioMoneda;
+import com.cecilialopez.conversormonedas.models.ConversionSolicitud;
 import com.cecilialopez.conversormonedas.services.ConsultaMoneda;
 import com.cecilialopez.conversormonedas.utils.CalculadorConversion;
 import com.cecilialopez.conversormonedas.utils.Conversor;
@@ -23,6 +24,7 @@ public class ConversorApp {
                 CambioMoneda tasas;
                 double cantidad, resultadoCambio;
                 String monedaOrigen, monedaDestino;
+                ConversionSolicitud solicitud;
 
                 switch (opcion) {
                     case 1:
@@ -33,8 +35,10 @@ public class ConversorApp {
                         monedaOrigen = "USD";
                         monedaDestino = "ARS";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 2:
                         System.out.println("Ha elegido Peso argentino => Dolar");
@@ -44,8 +48,10 @@ public class ConversorApp {
                         monedaOrigen = "ARS";
                         monedaDestino = "USD";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 3:
                         System.out.println("Ha elegido Dolar => Real brasileño");
@@ -55,8 +61,10 @@ public class ConversorApp {
                         monedaOrigen = "USD";
                         monedaDestino = "BRL";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 4:
                         System.out.println("Ha elegido Real brasileño => Dolar");
@@ -66,8 +74,10 @@ public class ConversorApp {
                         monedaOrigen = "BRL";
                         monedaDestino = "USD";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 5:
                         System.out.println("Ha elegido Dolar => Peso colombiano");
@@ -77,8 +87,10 @@ public class ConversorApp {
                         monedaOrigen = "USD";
                         monedaDestino = "COP";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 6:
                         System.out.println("Ha elegido Peso colombiano => Dolar");
@@ -88,8 +100,10 @@ public class ConversorApp {
                         monedaOrigen = "COP";
                         monedaDestino = "USD";
                         tasas = consulta.buscaCambioMoneda(monedaOrigen);
-                        resultadoCambio = calculadora.convertir(cantidad, monedaOrigen, monedaDestino, tasas);
-                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n", cantidad, monedaOrigen, resultadoCambio, monedaDestino);
+                        solicitud = new ConversionSolicitud(cantidad, monedaOrigen, monedaDestino, tasas);
+                        resultadoCambio = calculadora.convertir(solicitud);
+                        System.out.printf("El valor de %.2f %s corresponden al valor de =>>> %.2f %s%n",
+                                cantidad, monedaOrigen, resultadoCambio, monedaDestino);
                         break;
                     case 7:
                         System.out.println("Saliendo del conversor. ¡Hasta luego!");
